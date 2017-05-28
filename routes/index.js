@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
+const storeController = require('../controllers/storeController');
 // Do work here
-router.get('/', (req, res) => {
-  const alex = {name: 'alex'}
-  res.json(req.query)
-});
+router.get('/', storeController.homePage);
 
 router.get('/hello', (req, res) => {
   res.render('hello2', {title : 'elizabeth'})
