@@ -4,7 +4,8 @@ const storeController = require('../controllers/storeController');
 // Do work here
 router.get('/', storeController.homePage);
 router.get('/add', storeController.editStore);
-router.post('/add', storeController.createStore)
+router.post('/add', storeController.createStore);
+
 
 router.get('/hello', (req, res) => {
   res.render('hello2', {title : 'elizabeth'})
