@@ -20,9 +20,8 @@ exports.editStore = (req,res) => {
 }
 
 exports.createStore = async (req, res) => {
-  //res.json(req.body);
   const store = new Store(req.body);
   await store.save();
-  console.log('it worked!');
+  res.redirect('/')
 
 }
