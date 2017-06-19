@@ -23,7 +23,7 @@ storeSchema.pre('save', function(next) {
     return;    // if name not modified
               //then no need to run slug
   }
-  this.slug = slug(this.name);
+  this.slug = slugs(this.name);
   next()
   // TODO make more resiliant so slugs are unique
 })
