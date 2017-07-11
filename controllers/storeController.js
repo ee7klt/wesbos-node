@@ -19,7 +19,7 @@ exports.homePage = (req, res) => {
   res.render('index');
 }
 
-exports.editStore = (req,res) => {
+exports.addStore = (req,res) => {
   res.render('editStore', {title: 'Add Store'})
 }
 
@@ -35,4 +35,10 @@ exports.getStores = async (req, res) => {
   const stores = await Store.find(); // returns a promise
   console.log(stores)
   res.render('stores', {title: 'Stores', stores});
+}
+
+exports.editStore = async(req, res) => {
+  const id = req.params.id;
+  const store = await Store.findById(id);
+  res.render('editStore', {title: `edit ${store.name}`, store})
 }
