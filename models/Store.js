@@ -9,7 +9,7 @@ const storeSchema = new mongoose.Schema({
     trim: true,
     required: 'Please enter a store name!'
   },
-  slugs: String,
+  slug: String,
   description: {
     type: String,
     trim: true,
@@ -17,13 +17,16 @@ const storeSchema = new mongoose.Schema({
   tags: [String]
 })
 storeSchema.pre('save', function(next) {
+  console.log('storeSchema.pre in Store.js')
   // 'this' keyword is the store we're trying to save
   if (!this.isModified('name')) {
+    console.log('didnt run slug')
     next();
     return;    // if name not modified
               //then no need to run slug
   }
   this.slug = slugs(this.name);
+  console.log('slug is ', this.slug)
   next()
   // TODO make more resiliant so slugs are unique
 })
